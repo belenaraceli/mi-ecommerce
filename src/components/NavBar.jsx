@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import CartWidget from './CartWidget';
 
-const NavBar = ({ cartCount }) => {
+const NavBar = ({ cart }) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <a className="navbar-brand" href="#">Mi Tienda</a>
@@ -22,10 +22,11 @@ const NavBar = ({ cartCount }) => {
           </li>
         </ul>
       </div>
-      <CartWidget cartCount={cartCount} /> {/* Mostrar el contador del carrito */}
+      <CartWidget cart={cart} />
     </nav>
   );
 };
 
 export default NavBar;
+
 

@@ -6,21 +6,20 @@ import Productos from './pages/Productos';
 import Contacto from './pages/Contacto';
 
 const App = () => {
-  // Creamos un estado para el carrito, inicializado en 0
-  const [cartCount, setCartCount] = useState(0);
+  const [cart, setCart] = useState([]);
 
   // Función para agregar productos al carrito
-  const addToCart = () => {
-    setCartCount(cartCount + 1);
+  const addToCart = (producto) => {
+    setCart((prevCart) => [...prevCart, producto]);
   };
 
   return (
     <>
-      <NavBar cartCount={cartCount} /> {/* Pasamos el cartCount al NavBar */}
+      <NavBar cart={cart} />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/productos" element={<Productos addToCart={addToCart} />} />
-        <Route path="/contacto" element={<Contacto />} />
+        <Route path="/" element={<Home />} /> {/* Ruta principal */}
+        <Route path="/productos" element={<Productos addToCart={addToCart} />} /> {/* Ruta de productos */}
+        <Route path="/contacto" element={<Contacto />} /> {/* Ruta de contacto */}
       </Routes>
     </>
   );
