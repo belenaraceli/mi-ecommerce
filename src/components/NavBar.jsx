@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import CartWidget from './CartWidget';
 
-const NavBar = () => {
+const NavBar = ({ cartCount }) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <a className="navbar-brand" href="#">Mi Tienda</a>
@@ -11,19 +12,20 @@ const NavBar = () => {
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav">
           <li className="nav-item active">
-            <a className="nav-link" href="#">Inicio</a>
+            <Link className="nav-link" to="/">Inicio</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">Productos</a>
+            <Link className="nav-link" to="/productos">Productos</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">Contacto</a>
+            <Link className="nav-link" to="/contacto">Contacto</Link>
           </li>
         </ul>
       </div>
-      <CartWidget />
+      <CartWidget cartCount={cartCount} /> {/* Mostrar el contador del carrito */}
     </nav>
   );
 };
 
 export default NavBar;
+
