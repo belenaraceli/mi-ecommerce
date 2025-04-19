@@ -1,3 +1,5 @@
+import ItemListContainer from './components/ItemListContainer';
+import ItemDetailContainer from './components/ItemDetailContainer';
 import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import NavBar from './components/NavBar';
@@ -17,9 +19,11 @@ const App = () => {
     <>
       <NavBar cart={cart} />
       <Routes>
-        <Route path="/" element={<Home />} /> {/* Ruta principal */}
-        <Route path="/productos" element={<Productos addToCart={addToCart} />} /> {/* Ruta de productos */}
-        <Route path="/contacto" element={<Contacto />} /> {/* Ruta de contacto */}
+        <Route path="/" element={<Home />} />
+        <Route path="/productos" element={<ItemListContainer greeting="Todos los productos" />} />
+        <Route path="/categoria/:categoryId" element={<ItemListContainer greeting="Filtrado por categoría" />} />
+        <Route path="/productos/:id" element={<ItemDetailContainer addToCart={addToCart} />} />
+        <Route path="/contacto" element={<Contacto />} />
       </Routes>
     </>
   );
