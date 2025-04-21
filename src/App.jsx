@@ -7,6 +7,7 @@ import NavBar from './components/NavBar';
 import Home from './pages/Home';
 import Productos from './pages/Productos';
 import Contacto from './pages/Contacto';
+import Checkout from './pages/Checkout';
 
 const App = () => {
   const [cart, setCart] = useState([]);
@@ -26,6 +27,7 @@ const App = () => {
         <Route path="/productos/:id" element={<ItemDetailContainer addToCart={addToCart} />} />
         <Route path="/cart" element={<CartContainer cart={cart} setCart={setCart} />} />
         <Route path="/contacto" element={<Contacto />} />
+        <Route path="/checkout" element={<Checkout cart={cart} clearCart={() => setCart([])} />} />
       </Routes>
     </>
   );

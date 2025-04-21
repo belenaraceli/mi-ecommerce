@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import React from 'react';
 
 const CartView = ({ cart, removeFromCart, clearCart }) => {
@@ -19,6 +20,8 @@ const CartView = ({ cart, removeFromCart, clearCart }) => {
             ))}
           </ul>
           <button className="btn btn-warning me-2" onClick={clearCart}>Vaciar carrito</button>
+          <Link to="/checkout" className="btn btn-success"> Ir al checkout </Link>
+
         </>
       )}
     </div>
