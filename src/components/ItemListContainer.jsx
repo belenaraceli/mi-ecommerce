@@ -1,36 +1,48 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import ItemList from './ItemList';
+
+// 🔥 Firestore
+import { db } from '../firebase/config';
+import { collection, getDocs, query, where } from 'firebase/firestore';
 
 const ItemListContainer = ({ greeting }) => {
   const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(true);
-  const { categoryId } = useParams(); // ← 🟡 importante: este nombre debe coincidir con el de la ruta
+  const { categoryId } = useParams(); // este valor viene de la URL
 
   useEffect(() => {
     setLoading(true);
 
-    let url = 'https://fakestoreapi.com/products';
-    if (categoryId) {
-      url = `https://fakestoreapi.com/products/category/${categoryId}`;
-    }
+    // Referencia a la colección
+    const productosRef = collection(db, 'productos');
 
-    axios.get(url)
-      .then((response) => {
-        setProductos(response.data);
-        setLoading(false);
+    // Si hay categoría, filtramos por ella
+    const consulta = categoryId
+      ? query(productosRef, where('category', '==', categoryId))
+      : productosRef;
+
+    // Obtenemos los datos
+    getDocs(consulta)
+      .then((resp) => {
+        const items = resp.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        }));
+        // 🔍 Agregamos logs para debuggear
+      console.log("🟡 categoryId desde URL:", categoryId);
+      console.log("✅ Productos filtrados:", items);
+        setProductos(items);
       })
       .catch((error) => {
         console.error('Error al obtener productos:', error);
-        setLoading(false);
-      });
-
-  }, [categoryId]); // 🟡 vuelve a ejecutar si cambia la categoría
+      })
+      .finally(() => setLoading(false));
+  }, [categoryId]);
 
   return (
     <div className="container mt-5">
-      <h2 className="text-center">{greeting || "Productos"}</h2>
+      <h2 className="text-center">{greeting || 'Productos'}</h2>
       {loading ? <p>Cargando productos...</p> : <ItemList productos={productos} />}
     </div>
   );

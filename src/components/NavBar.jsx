@@ -42,16 +42,16 @@ const NavBar = ({ cart }) => {
               </a>
               <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
-                  <Link className="dropdown-item" to="/categoria/men's clothing">Ropa Hombre</Link>
+                  <Link className="dropdown-item" to="/categoria/hombre">Ropa Hombre</Link>
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="/categoria/women's clothing">Ropa Mujer</Link>
+                  <Link className="dropdown-item" to="/categoria/mujer">Ropa Mujer</Link>
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="/categoria/jewelery">Joyas</Link>
+                  <Link className="dropdown-item" to="/categoria/joyeria">Joyas</Link>
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="/categoria/electronics">Electrónica</Link>
+                  <Link className="dropdown-item" to="/categoria/electronica">Electrónica</Link>
                 </li>
               </ul>
             </li>
