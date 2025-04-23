@@ -2,26 +2,53 @@ import { Link } from 'react-router-dom';
 import React from 'react';
 
 const CartView = ({ cart, removeFromCart, clearCart }) => {
+  const total = cart.reduce((acc, item) => acc + item.price, 0);
+
   return (
-    <div className="container mt-5">
-      <h2>Carrito de compras</h2>
+    <div className="container my-5">
+      <h2 className="text-center mb-4">Tu Carrito</h2>
       {cart.length === 0 ? (
-        <p>No hay productos en el carrito.</p>
+        <div className="alert alert-info text-center">
+          No hay productos en el carrito.
+        </div>
       ) : (
         <>
-          <ul className="list-group mb-3">
-            {cart.map((item, index) => (
-              <li key={index} className="list-group-item d-flex justify-content-between align-items-center">
-                {item.title} - ${item.price}
-                <button className="btn btn-sm btn-danger" onClick={() => removeFromCart(item.id)}>
-                  Eliminar
-                </button>
-              </li>
-            ))}
-          </ul>
-          <button className="btn btn-warning me-2" onClick={clearCart}>Vaciar carrito</button>
-          <Link to="/checkout" className="btn btn-success"> Ir al checkout </Link>
-
+          <div className="table-responsive">
+            <table className="table table-bordered align-middle">
+              <thead className="table-light">
+                <tr>
+                  <th>Producto</th>
+                  <th className="text-end">Precio</th>
+                  <th className="text-center">Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                {cart.map((item, index) => (
+                  <tr key={index}>
+                    <td>{item.title}</td>
+                    <td className="text-end">${item.price.toFixed(2)}</td>
+                    <td className="text-center">
+                      <button
+                        className="btn btn-sm btn-outline-danger"
+                        onClick={() => removeFromCart(item.id)}
+                      >
+                        Eliminar
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="d-flex justify-content-between align-items-center mt-4">
+            <button className="btn btn-outline-secondary" onClick={clearCart}>
+              Vaciar Carrito
+            </button>
+            <h5>Total: ${total.toFixed(2)}</h5>
+            <Link to="/checkout" className="btn btn-primary">
+              Finalizar Compra
+            </Link>
+          </div>
         </>
       )}
     </div>
@@ -29,3 +56,4 @@ const CartView = ({ cart, removeFromCart, clearCart }) => {
 };
 
 export default CartView;
+
