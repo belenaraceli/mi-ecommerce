@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import ItemDetail from './ItemDetail'; // componente de presentación
+import ItemDetail from './ItemDetail'; 
 
 // 🔥 Firestore
 import { db } from '../firebase/config';

@@ -2,6 +2,7 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
+  line-height: 1.6;
   background-color: #fff;
   color: #212529;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -43,6 +44,101 @@ a:hover {
   border-color: #333;
 }
 
+.btn-outline-secondary:hover {
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
 .container {
   max-width: 1140px;
+}
+
+.table {
+  margin-bottom: 0;
+  background-color: #fff;
+}
+
+.table th, .table td {
+  vertical-align: middle;
+}
+
+.alert {
+  font-size: 1.1rem;
+  padding: 1.5rem;
+}
+
+/* ---------- ESTILOS CONTACTO ---------- */
+
+.contacto-page h1 {
+  font-size: 2.5rem;
+}
+
+.contacto-page h5 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.contacto-page p {
+  font-size: 1rem;
+}
+
+.contacto-page .form-label {
+  font-weight: 500;
+}
+
+.contacto-page .form-control {
+  border-radius: 6px;
+  padding: 0.6rem;
+  font-size: 0.95rem;
+}
+
+.contacto-page button {
+  font-size: 0.95rem;
+  padding: 0.6rem 1.2rem;
+}
+
+/* ---------- REDES SOCIALES ---------- */
+.social-buttons a {
+  font-size: 0.875rem;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 0.75rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.social-buttons a:hover {
+  background-color: #f8f9fa;
+  text-decoration: none;
+}
+
+/* ---------- ESTILOS CHECKOUT ---------- */
+.checkout-page h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.checkout-page .form-label {
+  font-weight: 500;
+}
+
+.checkout-page .form-control {
+  border-radius: 6px;
+  padding: 0.6rem;
+  font-size: 0.95rem;
+}
+
+.checkout-page button {
+  font-size: 1rem;
+  padding: 0.6rem 1.4rem;
+}
+
+.footer {
+  font-size: 0.875rem;
+  background-color: #f8f9fa;
+}
+
+.footer a:hover {
+  color: #007bff;
+  text-decoration: underline;
 }

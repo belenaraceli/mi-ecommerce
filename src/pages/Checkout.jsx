@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { collection, addDoc, Timestamp } from 'firebase/firestore';
 import { db } from '../firebase/config';
+import Swal from 'sweetalert2';
 
 const Checkout = ({ cart, clearCart }) => {
   const [form, setForm] = useState({
@@ -32,37 +33,49 @@ const Checkout = ({ cart, clearCart }) => {
       const docRef = await addDoc(collection(db, 'orders'), orden);
       setOrderId(docRef.id);
       clearCart();
+      Swal.fire({
+        icon: 'success',
+        title: '¡Gracias por tu compra!',
+        text: `Tu número de orden es: ${docRef.id}`,
+        confirmButtonColor: '#212529'
+      });
     } catch (error) {
       console.error('Error al generar la orden:', error);
     }
   };
 
   return (
-    <div className="container mt-5">
-      <h2>Finalizar compra</h2>
+    <div className="container mt-5 mb-5 checkout-page">
+      <div className="row justify-content-center">
+        <div className="col-md-6">
+          <h2 className="text-center mb-4">Finalizar compra</h2>
 
-      {orderId ? (
-        <div className="alert alert-success mt-4">
-          <h4>¡Gracias por tu compra!</h4>
-          <p>Tu número de orden es: <strong>{orderId}</strong></p>
+          {orderId ? (
+            <div className="alert alert-success mt-4 text-center">
+              <h4>¡Gracias por tu compra!</h4>
+              <p>Tu número de orden es: <strong>{orderId}</strong></p>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit}>
+              <div className="mb-3">
+                <label className="form-label">Nombre</label>
+                <input type="text" name="nombre" className="form-control" value={form.nombre} onChange={handleChange} required />
+              </div>
+              <div className="mb-3">
+                <label className="form-label">Email</label>
+                <input type="email" name="email" className="form-control" value={form.email} onChange={handleChange} required />
+              </div>
+              <div className="mb-4">
+                <label className="form-label">Teléfono</label>
+                <input type="tel" name="telefono" className="form-control" value={form.telefono} onChange={handleChange} required />
+              </div>
+              <div className="text-center">
+                <button type="submit" className="btn btn-dark px-4">Generar orden</button>
+              </div>
+            </form>
+          )}
         </div>
-      ) : (
-        <form onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label>Nombre</label>
-            <input type="text" name="nombre" className="form-control" value={form.nombre} onChange={handleChange} required />
-          </div>
-          <div className="mb-3">
-            <label>Email</label>
-            <input type="email" name="email" className="form-control" value={form.email} onChange={handleChange} required />
-          </div>
-          <div className="mb-3">
-            <label>Teléfono</label>
-            <input type="tel" name="telefono" className="form-control" value={form.telefono} onChange={handleChange} required />
-          </div>
-          <button type="submit" className="btn btn-success">Generar orden</button>
-        </form>
-      )}
+      </div>
     </div>
   );
 };

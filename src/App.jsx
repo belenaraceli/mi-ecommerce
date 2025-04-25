@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import Productos from './pages/Productos';
 import Contacto from './pages/Contacto';
 import Checkout from './pages/Checkout';
+import Footer from './components/Footer';
 
 const App = () => {
   const [cart, setCart] = useState([]);
@@ -29,6 +30,7 @@ const App = () => {
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/checkout" element={<Checkout cart={cart} clearCart={() => setCart([])} />} />
       </Routes>
+      <Footer />
     </>
   );
 };
