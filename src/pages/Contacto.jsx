@@ -9,7 +9,6 @@ const Contacto = () => {
       </p>
 
       <div className="row">
-        {/* Información de contacto */}
         <div className="col-md-6 mb-4">
           <h5>Datos de contacto</h5>
           <p><strong>Email:</strong> info@mitienda.com</p>
@@ -30,7 +29,7 @@ const Contacto = () => {
           </div>
         </div>
 
-        {/* Formulario de contacto */}
+
         <div className="col-md-6">
           <h5>Formulario de consulta</h5>
           <form>

@@ -1,12 +1,44 @@
-# React + Vite
+## 🛍 E-commerce React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto es una Single Page Application desarrollada con React JS para simular una tienda online. Fue realizada como entrega final del curso de React JS en Coderhouse.
 
-Currently, two official plugins are available:
+## 🔧 Tecnologías utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React JS
+- React Router DOM
+- Firebase (Firestore)
+- Bootstrap
+- SweetAlert2
+- Vite
 
-## Expanding the ESLint configuration
+## ✨ Funcionalidades
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Visualización de productos
+- Filtrado por categorías
+- Detalle de cada producto
+- Carrito de compras con Context API
+- Checkout con formulario y generación de orden en Firestore
+- Feedback visual con SweetAlert
+
+## 📦 Firebase
+
+- Firestore utilizado para cargar productos y guardar órdenes de compra.
+- Conexión configurada en `src/firebase/config.js`.
+
+## 📁 Estructura del proyecto
+
+```plaintext
+/src
+├── assets
+├── components
+│   ├── /nav
+│   ├── /products
+│   ├── /productDetail
+│   ├── /cart
+│   ├── /checkout
+│   └── /layout
+├── pages
+├── firebase
+├── App.jsx
+├── main.jsx
+├── styles.css

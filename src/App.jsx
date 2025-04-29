@@ -1,19 +1,20 @@
-import ItemListContainer from './components/ItemListContainer';
-import ItemDetailContainer from './components/ItemDetailContainer';
-import CartContainer from './components/CartContainer';
 import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import NavBar from './components/NavBar';
+
+import NavBar from './components/nav/NavBar';
+import Footer from './components/layout/Footer';
+
+import ItemListContainer from './components/products/ItemListContainer';
+import ItemDetailContainer from './components/productDetail/ItemDetailContainer';
+import CartContainer from './components/cart/CartContainer';
+
 import Home from './pages/Home';
-import Productos from './pages/Productos';
 import Contacto from './pages/Contacto';
 import Checkout from './pages/Checkout';
-import Footer from './components/Footer';
 
 const App = () => {
   const [cart, setCart] = useState([]);
 
-  // Función para agregar productos al carrito
   const addToCart = (producto) => {
     setCart((prevCart) => [...prevCart, producto]);
   };

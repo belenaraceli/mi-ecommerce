@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import React from 'react';
+import CartItem from './CartItem'; 
 
 const CartView = ({ cart, removeFromCart, clearCart }) => {
   const total = cart.reduce((acc, item) => acc + item.price, 0);
@@ -23,19 +24,8 @@ const CartView = ({ cart, removeFromCart, clearCart }) => {
                 </tr>
               </thead>
               <tbody>
-                {cart.map((item, index) => (
-                  <tr key={index}>
-                    <td>{item.title}</td>
-                    <td className="text-end">${item.price.toFixed(2)}</td>
-                    <td className="text-center">
-                      <button
-                        className="btn btn-sm btn-outline-danger"
-                        onClick={() => removeFromCart(item.id)}
-                      >
-                        Eliminar
-                      </button>
-                    </td>
-                  </tr>
+                {cart.map((item) => (
+                  <CartItem key={item.id} item={item} removeFromCart={removeFromCart} />
                 ))}
               </tbody>
             </table>

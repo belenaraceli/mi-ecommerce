@@ -5,25 +5,22 @@ const ItemDetail = ({ producto, addToCart }) => {
   const [cantidad, setCantidad] = useState(1);
 
   const handleAgregar = () => {
-    // Se podría extender para controlar stock en un futuro
     addToCart({ ...producto, cantidad });
   };
 
   return (
     <div className="container mt-5">
       <div className="row align-items-start">
-        {/* Imagen */}
+
         <div className="col-md-6">
           <img src={producto.image} alt={producto.title} className="img-fluid rounded" />
         </div>
 
-        {/* Detalles */}
         <div className="col-md-6">
           <h2>{producto.title}</h2>
           <p className="text-muted">{producto.description}</p>
           <p className="h5 mb-4"><strong>${producto.price}</strong></p>
 
-          {/* Selector de cantidad */}
           <div className="mb-3">
             <label className="form-label">Cantidad</label>
             <input
@@ -51,7 +48,6 @@ const ItemDetail = ({ producto, addToCart }) => {
           </button>
 
 
-          {/* Info adicional */}
           <div className="mt-4">
             <p><strong>Métodos de pago:</strong> Tarjeta de crédito, débito o efectivo</p>
             <p><strong>Envíos:</strong> Gratis a todo el país desde $20.000</p>
